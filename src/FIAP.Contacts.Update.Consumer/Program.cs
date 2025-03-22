@@ -14,16 +14,11 @@ using OpenTelemetry.Trace;
 using OpenTelemetry.Logs;
 
 var host = Host.CreateDefaultBuilder(args)
-     .ConfigureLogging(logging =>
-     {
-         logging.AddConsole();
-     })
     .ConfigureServices((builder, services) =>
     {
         services.AddInfraServices(builder.Configuration);
         services.AddApplicationService();
         services.AddConsumers();
-        //services.AddMetricsConfig();
 
         var config = builder.Configuration;
 
