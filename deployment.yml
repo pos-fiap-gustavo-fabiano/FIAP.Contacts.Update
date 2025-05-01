@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contact-update-deployment
+  labels:
+    app: contact-update
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: contact-update
+  template:
+    metadata:
+      labels:
+        app: contact-update
+    spec:
+      containers:
+        - name: contact-update-container
+          image: gugol94/fiapcontacts-update:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
